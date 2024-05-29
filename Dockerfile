@@ -45,6 +45,8 @@ RUN pip3 install --upgrade pip && \
                  toml \
                  pyyaml
 
+RUN git config --global http.lowSpeedLimit 0
+RUN git config --global http.lowSpeedTime 999999
 RUN git clone https://github.com/PX4/PX4-Autopilot.git ${FIRMWARE_DIR}
 RUN git -C ${FIRMWARE_DIR} checkout main
 RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
